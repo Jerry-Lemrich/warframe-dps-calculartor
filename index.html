@@ -1,0 +1,157 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Warframe DPS CACUlATOR</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<!-- MESSAGE D'ERREUR -->
+<div id="message"></div>
+
+<!-- HOTELS -->
+<div id="stats">
+    <h1>Warframe Weapond DPS Calculator</h1>
+
+    <!-- FORMULAIRE DE RESERVATION -->
+    <!-- au cas ou t'aurais pas compris place ton fromulaire ici. A+ Manfred -->
+    <form action="" method="post">
+        <ul>
+            <li>
+                <label for="lis_Type-weapons">weapond type</label>
+                <select name="lis_Type-weapons" id="lis_Type-weapons">
+                    <option value="0" selected>-- choose a type of weapond --</option>
+                    <option value="gun">gun</option>
+                    <option value="melee">melee</option>
+                </select>
+            </li>
+            <fieldset>
+                <legend>Base Damage</legend>
+            <li>
+                <label for="txt_critChance" >Critical Chance (25% = 0.25) </label>
+                <input type="text" name="txt_critChance" id="txt_critChance"  size="5" >
+            </li>
+            <li>
+                <label for="txt_critMulti" >Critical Damage</label>
+                <input type="text" name="txt_critMulti" id="txt_critMulti"  size="5" >
+            </li>
+            <li>
+                <label for="txt_statut" >Statut Chance (25% = 0.25)</label>
+                <input type="text" name="txt_statut" id="txt_statut" size="5" >
+            </li>
+                <li>
+                <label for="txt_fireRate" >fireRate / Attack speed</label>
+                <input type="text" name="txt_fireRate" id="txt_fireRate" size="5" >
+            </li>
+             <li>
+                <label for="txt_impact" >Impact Damage</label>
+                <input type="text" name="txt_impact" id="txt_impact"  size="5" >
+            </li>
+            <li>
+                <label for="txt_Perfo" >Puncture Damage</label>
+                <input type="text" name="txt_Perfo" id="txt_Perfo"  size="5" >
+            </li>
+            <li>
+                <label for="txt_slash" >slash Damage</label>
+                <input type="text" name="txt_slash" id="txt_slash"   size="5" >
+            </li>
+            </fieldset>
+
+            <fieldset>
+                <legend>Elemental Damage</legend>
+                <li>
+                    <label for="txt_toxinDamage" >toxin Damage</label>
+                    <input type="text" name="txt_toxinDamage" id="txt_toxinDamage"  size="5" >
+                </li>
+                <li>
+                    <label for="txt_heatDamage" >heat Damage</label>
+                    <input type="text" name="txt_heatDamage" id="txt_heatDamage"  size="5" >
+                </li>
+                <li>
+                    <label for="txt_electricDamage" >electric Damage</label>
+                    <input type="text" name="txt_electricDamage" id="txt_electricDamage"   size="5" >
+                </li>
+                <li>
+                    <label for="txt_coldDamage" >cold Damage</label>
+                    <input type="text" name="txt_coldDamage" id="txt_coldDamage" size="5"  >
+                </li>
+            </fieldset>
+
+            <fieldset>
+                <legend>Combined Elemental Damage</legend>
+                <li>
+                    <label for="txt_radiationDamage" >radiation Damage</label>
+                    <input type="text" name="txt_radiationDamage" id="txt_radiationDamage" size="5" >
+                </li>
+                <li>
+                    <label for="txt_magneticDamage" >magnetic Damage</label>
+                    <input type="text" name="txt_magneticDamage" id="txt_magneticDamage"  size="5" >
+                </li>
+                <li>
+                    <label for="txt_blastDamage" >blast Damage</label>
+                    <input type="text" name="txt_blastDamage" id="txt_blastDamage"  size="5" >
+                </li>
+                <li>
+                    <label for="txt_viralDamage" >viral Damage</label>
+                    <input type="text" name="txt_viralDamage" id="txt_viralDamage" size="5" >
+                </li>
+                <li>
+                    <label for="txt_corrosiveDamage" >corrosive Damage</label>
+                    <input type="text" name="txt_corrosiveDamage" id="txt_corrosiveDamage" size="5" >
+                </li>
+                <li>
+                    <label for="txt_gasDamage" >gas Damage</label>
+                    <input type="text" name="txt_gasDamage" id="txt_gasDamage"  size="5" >
+                </li>
+            </fieldset>
+
+            <fieldset id="other">
+                <legend>Other Stats</legend>
+                <li>
+                    <label for="txt_multishot" >multishot (90% = 0.90)</label>
+                    <input type="text" name="txt_multishot" id="txt_multishot"  value="0" size="5" >
+                </li>
+                <li>
+                    <label for="txt_magazineSize" >magazine Size</label>
+                    <input type="text" name="txt_magazineSize" id="txt_magazineSize"  value="0" size="5" >
+                </li>
+                <li>
+                    <label for="txt_reload" >reload speed</label>
+                    <input type="text" name="txt_reload" id="txt_reload" value="0" size="5" >
+                </li>
+            </fieldset>
+            <li>
+                <button type="reset" name="bt_reset">Reset</button>
+                <button type="submit" name="bt_envoyer">Calculate</button>
+            </li>
+        </ul>
+    </form>
+</div>
+
+<!-- RESERVATION -->
+<div id="result">
+
+    <img id="photo" src="" alt="Hotel"/><!-- PHOTO DE L'HOTEL SELECTIONNE-->
+
+    <h1>Your result</h1>
+    <h2></h2><!-- NOM DE L'HOTEL SELECTIONNE -->
+
+    <!-- 	Et oui, il n'y a pas d'id pour cet élément h2, mais pas touche au code, non non non !
+    Mais vous allez trouver une solution, n'est-ce pas ? Bonne chance ;-)
+    -->
+    <div>
+
+    Total Damage Per Shot:
+    <span id="DamagePerShot"></span><!-- NOMBRE DE CHAMBRE RESERVEES -->
+    </div>
+    Burst DPS:
+    <span id="BrustDps"></span><!-- TYPE DE CHAMBRE SELECTIONNE -->
+
+    <span id="sustainedDPS"></span>
+    <!-- LISTE DES OPTIONS SELECTIONNE -->
+
+</div>
+<!-- FIN RESERVATION -->
+<script src="dps.js" type="text/javascript"></script>
+</body>
+</html>
